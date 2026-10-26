@@ -1,1 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>Happy Birthday, Brother Michael</title>
+<style>
+:root {
+  --gold: #e8c66a;
+  --gold-light: #fff0b3;
+  --black: #080808;
+  --muted: #c8c1b1;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: #fffaf0;
+  background: var(--black);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 10%, #60471838, transparent 40%),
+    radial-gradient(ellipse at 90% 65%, #60471824, transparent 45%);
+}
+a { color: var(--gold-light); }
+.gold { color: var(--gold); }
+nav {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  padding: 18px;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 11px;
+  color: var(--gold);
+}
+.hero {
+  min-height: 100svh;
+  padding: 100px 20px 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before, .hero::after {
+  content: "✦";
+  position: absolute;
+  color: var(--gold);
+  opacity: .55;
+  animation: float 5s ease-in-out infinite;
+}
+.hero::before { top: 23%; left: 12%; font-size: 23px; }
+.hero::after { bottom: 20%; right: 13%; font-size: 30px; animation-delay: 1.5s; }
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 11px Arial, sans-serif;
+}
+h1 {
+  font-size: clamp(42px, 9vw, 86px);
+  line-height: 1.12;
+  font-weight: normal;
+  margin: 22px 0;
+  animation: rise 1.3s ease both;
+}
+.hero p { max-width: 570px; color: var(--muted); }
+.portrait {
+  width: min(260px, 72vw);
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 140px 140px 12px 12px;
+  border: 2px solid var(--gold);
+  padding: 6px;
+  background: #15120c;
+  box-shadow: 0 0 45px #e8c66a22;
+  margin: 20px 0;
+}
+.button {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  background: #e8c66a0c;
+  padding: 12px 22px;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  font: 12px Arial, sans-serif;
+  letter-spacing: 1px;
+  transition: .25s;
+}
+.button:hover { background: var(--gold); color: #080808; }
+section {
+  padding: 75px 20px;
+  max-width: 920px;
+  margin: auto;
+  text-align: center;
+}
+.section-label {
+  color: var(--gold);
+  font: 10px Arial, sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: normal;
+  line-height: 1.25;
+  margin: 12px 0 25px;
+}
+p { color: var(--muted); }
+.letter {
+  border: 1px solid #b89b554a;
+  padding: clamp(22px, 5vw, 48px);
+  text-align: left;
+  background: linear-gradient(135deg, #ffffff05, #e8c66a08);
+}
+.letter p { font-size: 17px; }
+.quote {
+  color: var(--gold-light);
+  font-size: clamp(25px, 5vw, 38px);
+  line-height: 1.4;
+  font-style: italic;
+  margin: 35px auto;
+}
+.traits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+.trait {
+  border: 1px solid #b89b553d;
+  padding: 25px 18px;
+  background: #ffffff04;
+}
+.trait .symbol { color: var(--gold); font-size: 25px; }
+.trait h3 { color: var(--gold-light); font-weight: normal; margin: 8px 0; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+.gallery img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border: 1px solid #e8c66a88;
+  padding: 5px;
+  background: #15120c;
+}
+.gallery figure { margin: 0; }
+.gallery figcaption { color: var(--gold); font-size: 13px; padding: 8px; }
+.prayer {
+  background: linear-gradient(135deg, #c49a3514, #ffffff03);
+  border-top: 1px solid #b89b5540;
+  border-bottom: 1px solid #b89b5540;
+  max-width: none;
+}
+.prayer-inner { max-width: 800px; margin: auto; }
+.blessing {
+  display: none;
+  color: var(--gold-light);
+  margin: 25px auto 0;
+  max-width: 650px;
+  font-size: 18px;
+}
+.blessing.show { display: block; animation: rise .8s ease both; }
+.music { margin-top: 22px; }
+.music audio { width: min(100%, 380px); }
+footer {
+  border-top: 1px solid #b89b5540;
+  padding: 35px 18px;
+  text-align: center;
+  color: #a69b82;
+  font-size: 12px;
+}
+footer strong { color: var(--gold); font-weight: normal; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-18px) rotate(15deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
 
+<nav>✦ A CELEBRATION OF A REMARKABLE SOUL ✦</nav>
+
+<header class="hero">
+  <div class="eyebrow">Today, we celebrate you</div>
+  <h1>Happy Birthday,<br><span class="gold">Brother Michael</span></h1>
+  <p>To a man whose gentle heart, humility, and kindness make the world a little better.</p>
+
+  <img class="portrait" src="Michael.jpg" alt="Brother Michael"
+       onerror="this.onerror=null;this.src='micheal.jpg.jpeg';">
+
+  <p>Today is more than another birthday. It is a celebration of the blessing you are to the people around you.</p>
+  <a class="button" href="#letter">YOUR SPECIAL LETTER ↓</a>
+
+  <div class="music">
+    <p class="gold">A little birthday soundtrack</p>
+    <audio controls preload="none">
+      <source src="assets/birthday-song.mp3" type="audio/mpeg">
+      Your browser does not support this audio player.
+    </audio>
+    <small style="color:#a69b82">Add your chosen audio file as assets/birthday-song.mp3 to enable music.</small>
+  </div>
+</header>
+
+<section id="letter">
+  <div class="section-label">Words from the heart</div>
+  <h2>A Letter to <span class="gold">My Brother</span></h2>
+  <div class="letter">
+    <p>Dear Brother Michael,</p>
+    <p>Some people come into our lives and make a difference without even trying. You are one of those people. Your humility, your gentle heart, and the genuine care you show others speak louder than words ever could.</p>
+    <p>You notice when something is wrong. You check in when someone becomes quiet. You show up when your presence matters. These may seem like little things, but they mean more than you may ever fully understand.</p>
+    <p>Thank you for your kindness, your loyalty, your support, and the beautiful person you continue to be. Thank you for being someone people can appreciate, respect, and look up to.</p>
+    <p class="quote">“Whenever I count my blessings, I count you twice.”</p>
+    <p>On your birthday, I pray that the love and kindness you give so freely will find their way back to you in countless beautiful ways. You deserve peace, happiness, good health, open doors, and a life filled with reasons to smile.</p>
+    <p>Happy birthday, Brother Michael. You are loved, valued, and deeply appreciated.</p>
+    <p class="gold">With love and gratitude ❤️</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">The man we celebrate</div>
+  <h2>Your <span class="gold">Beautiful Qualities</span></h2>
+  <p>Today, we celebrate not only your age, but the heart behind your name.</p>
+  <div class="traits">
+    <article class="trait">
+      <div class="symbol">✧</div>
+      <h3>Humility</h3>
+      <p>You carry yourself with a quiet grace that makes people feel respected and valued.</p>
+    </article>
+    <article class="trait">
+      <div class="symbol">♡</div>
+      <h3>Kindness</h3>
+      <p>Your thoughtful actions remind people that goodness still lives in this world.</p>
+    </article>
+    <article class="trait">
+      <div class="symbol">❋</div>
+      <h3>Gentle Heart</h3>
+      <p>Your care and compassion are strengths that make you truly special.</p>
+    </article>
+    <article class="trait">
+      <div class="symbol">∞</div>
+      <h3>Loyalty</h3>
+      <p>You show that being there for people is one of the most meaningful gifts.</p>
+    </article>
+    <article class="trait">
+      <div class="symbol">✦</div>
+      <h3>Support</h3>
+      <p>You notice when someone needs you, and your presence can mean everything.</p>
+    </article>
+    <article class="trait">
+      <div class="symbol">☼</div>
+      <h3>A Lasting Impact</h3>
+      <p>Your character leaves memories that people carry with gratitude.</p>
+    </article>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-label">Moments worth keeping</div>
+  <h2>Our <span class="gold">Photo Gallery</span></h2>
+  <p>Every picture holds a memory. Add more photos to this collection whenever you wish.</p>
+  <div class="gallery">
+    <figure>
+      <img src="Michael.jpg" alt="Brother Michael portrait"
+           onerror="this.onerror=null;this.src='micheal.jpg.jpeg';">
+      <figcaption>Brother Michael ✨</figcaption>
+    </figure>
+    <figure>
+      <img src="micheal.jpg.jpeg" alt="Another photo of Brother Michael"
+           onerror="this.onerror=null;this.style.display='none';">
+      <figcaption>A special memory ❤️</figcaption>
+    </figure>
+  </div>
+  <p style="font-size:13px">To add more photos, upload them to the repository and add another image entry in this gallery.</p>
+</section>
+
+<section>
+  <div class="section-label">A prayer for your new age</div>
+  <h2>May Your <span class="gold">Light Keep Shining</span></h2>
+  <p>May God bless the work of your hands, protect you wherever you go, and fill your heart with peace. May the doors that are right for you open at the right time. May you enjoy good health, meaningful friendships, abundant joy, and opportunities beyond your expectations.</p>
+  <p>May you never lack reasons to smile, strength to keep going, or people who genuinely love and support you. May this new chapter bring beautiful surprises and lasting fulfilment.</p>
+</section>
+
+<section class="prayer">
+  <div class="prayer-inner">
+    <div class="section-label">A birthday blessing, just for you</div>
+    <h2>Your New Year of <span class="gold">Blessings</span></h2>
+    <p>There's one more message waiting for you.</p>
+    <button class="button" id="blessingButton" type="button" onclick="showBlessing()">REVEAL YOUR BLESSING ✦</button>
+    <div class="blessing" id="blessing" aria-live="polite">
+      Brother Michael, may this new age be one of your most beautiful chapters yet. May your efforts bear fruit, your burdens become lighter, your heart remain peaceful, and your dreams find room to grow. May you be celebrated as sincerely as you celebrate others. May goodness follow you, favour meet you, and love surround you today and always. Amen. 💜🥳
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Before the day ends</div>
+  <h2>Never Forget How <span class="gold">Much You Matter</span></h2>
+  <p>One birthday cannot contain all the gratitude you deserve. But this little corner of the internet is a reminder that you more matters, your kindness matters, and you matter.</p>
+  <p class="quote">Happy Birthday, Brother Michael. May your best days still be ahead of you.</p>
+</section>
+
+<footer>
+  Made with love, gratitude, and prayers for <strong>Brother Michael</strong>.<br>
+  <span>May your new age be filled with light. ✦</span>
+</footer>
+
+<script>
+function showBlessing() {
+  const blessing = document.getElementById("blessing");
+  const button = document.getElementById("blessingButton");
+  blessing.classList.toggle("show");
+  button.textContent = blessing.classList.contains("show")
+    ? "HIDE BLESSING ↑"
+    : "REVEAL YOUR BLESSING ✦";
+}
+</script>
+</body>
+</html
