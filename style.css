@@ -54,3 +54,22 @@
   object-fit: contain;
   object-position: center top;
 }
+/* Featured portrait: show the entire picture */
+.gallery .featured-portrait {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 25px;
+}
+
+.gallery .featured-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  border: 2px solid #d4af37;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
