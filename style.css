@@ -46,3 +46,11 @@
 .gallery .featured-portrait figcaption {
   font-size: 1.1rem;
 }
+/* Show Brother Michael's complete portrait */
+.gallery .featured-portrait img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center top;
+}
