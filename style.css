@@ -1,0 +1,48 @@
+/* Brother Michael's birthday gallery */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.gallery figure {
+  margin: 0;
+  text-align: center;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border: 1px solid #d4af37;
+  border-radius: 14px;
+}
+
+.gallery figcaption {
+  color: #d4af37;
+  padding: 10px;
+}
+
+/* Make Brother Michael's portrait bigger */
+.gallery .featured-portrait {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 25px;
+}
+
+.gallery .featured-portrait img {
+  height: auto;
+  max-height: 650px;
+  object-fit: contain;
+  border: 2px solid #d4af37;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.gallery .featured-portrait figcaption {
+  font-size: 1.1rem;
+}
